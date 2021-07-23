@@ -1,6 +1,6 @@
 # %%
 from flask import Flask, request, jsonify
-from FaceDetection import Detection
+import FaceDetection as FD
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 def detect():
     image_data = request.form['image_data']
 
-    response = jsonify(Detection.face(image_data))
+    response = jsonify(FD.face(image_data))
 
     response.headers.add('Access-Control-Allow-Origin', '*')
 
@@ -18,8 +18,7 @@ def detect():
 
 if __name__ == "__main__":
     print("Face detections server started")
-    app.run(port=5501)
-    Detection.face()
+    app.run(port=5500)
 
 
 # %%

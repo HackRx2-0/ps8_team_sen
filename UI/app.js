@@ -57,31 +57,21 @@ function showFile(){
 document.getElementById("button").addEventListener("click", process);
 
 function process(){
-  let url = "http://127.0.0.1:5501/detect";
-  $.post(url, {image_data : imgTxt},
-    function() {
-      $("#result").show()
-      $("#result").append("shit this is working fr")
-    });
-}
-/*
-function process(){
-    let url = "http://127.0.0.1:5000/process_image";
+    let url = "http://127.0.0.1:5500/detect";
 
         $.post(url, {imagedata : imgTxt},
             function(data) {
-              if(data[0]<0)
+              if(data[1]<0)
                 { 
                   $("#resultHolder").show();
-                  $("#resultHolder").append("Image rejected with a FitMent score of :" + score +" because "+data[1]);
+                  $("#resultHolder").append("Image rejected with a FitMent score of :" + data[1] +" because "+data[0]);
                   dropArea.classList.remove("active");
                   dragText.textContent = "Drag & Drop to Upload File";
                 }
-              else if(data[0]>0)
+              else if(data[1]>0)
                 {
                   $("#resultHolder").show();
-                  $("#resultHolder").append("Image accepted with a FitMent score of :" + score );
-                  //$("#success").show()
+                  $("#resultHolder").append("Image accepted with a FitMent score of :" + data[1] );
                 }
               else
                 {
@@ -90,4 +80,4 @@ function process(){
                 }
             });
 }
-*/
+
